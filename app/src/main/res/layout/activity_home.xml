@@ -17,6 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|enterAlways"
             app:title="Stranger" />
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -26,9 +27,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="0dp"
         android:layout_marginEnd="0dp"
-        app:layout_anchorGravity="bottom"
-        app:layout_anchor="@id/nav_host_fragment"
         android:background="?android:attr/windowBackground"
+        app:layout_anchor="@id/nav_host_fragment"
+        app:layout_anchorGravity="bottom"
         app:menu="@menu/bottom_nav_menu" />
 
     <fragment

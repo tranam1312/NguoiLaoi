@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.stranger.R
 import com.example.stranger.databinding.ActivityLoginBinding
+import com.example.stranger.local.Preferences
 import com.example.stranger.ui.NewProflie.NewProFileActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -24,6 +25,9 @@ import gun0912.tedimagepicker.util.ToastUtil.context
 class LoginActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var auth: FirebaseAuth
+    private val preferences: Preferences by lazy {
+        Preferences.getInstance(context)
+    }
     private lateinit var binding: ActivityLoginBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +41,7 @@ class LoginActivity : AppCompatActivity() {
         }
             else {
                 Handler().postDelayed({
+                    preferences.updateUserId(auth.currentUser.uid)
                     val  intent = Intent(this, NewProFileActivity::class.java)
                     startActivity(intent)
                 },3000)
@@ -86,6 +91,7 @@ class LoginActivity : AppCompatActivity() {
                     // Sign in success, update UI with the signed-in user's information
                     Log.d(ContentValues.TAG, "signInWithCredential:success")
                     Toast.makeText(context, "Login ", Toast.LENGTH_LONG).show()
+                    preferences.updateUserId(auth.currentUser.uid)
                     val intent = Intent(this,NewProFileActivity::class.java)
                     startActivity(intent)
                 } else {

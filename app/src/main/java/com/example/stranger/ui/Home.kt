@@ -54,10 +54,9 @@ class Home : AppCompatActivity() {
             }
             true
         }
-
     }
     private fun startFragment(fragment:Fragment){
-        supportFragmentManager.beginTransaction().replace(android.R.id.content,fragment)
+        supportFragmentManager.beginTransaction().setCustomAnimations(R.anim.slide_in,R.anim.fade_out,R.anim.fade_in,R.anim.silde_out).replace(android.R.id.content,fragment)
                 .commit()
     }
 }

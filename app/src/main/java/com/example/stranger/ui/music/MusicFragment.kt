@@ -32,12 +32,10 @@ class MusicFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,R.layout.music_fragment,container,false)
         return binding.root
     }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
     }
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         menu.clear()

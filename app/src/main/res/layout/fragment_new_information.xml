@@ -6,7 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
             android:layout_width="match_parent"
@@ -20,7 +19,7 @@
                 android:id="@+id/toolbar_inf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:title="@string/test"/>
+                app:title="Complete information"/>
         </com.google.android.material.appbar.AppBarLayout>
 
         <LinearLayout
@@ -35,10 +34,9 @@
 
             <ImageView
                 android:id="@+id/img_avtar"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_gravity="center" />
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -55,22 +53,91 @@
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <LinearLayout
+                android:layout_weight="9"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
             <com.google.android.material.textfield.TextInputLayout
+                android:layout_weight="3"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:hint=" Your date of birth"
+                android:hint="Date of birth"
                 app:hintEnabled="true">
-
                 <EditText
-                    android:id="@+id/date_of_birth"
+                    android:id="@+id/day"
+                    android:imeOptions="actionNext"
+                    android:maxLength="2"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date" />
+                    android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_weight="3"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Month of birth"
+                    android:layout_marginLeft="5dp"
+                    app:hintEnabled="true">
+                    <EditText
+                        android:id="@+id/month"
+                        android:imeOptions="actionNext"
+                        android:maxLength="2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date" />
+                </com.google.android.material.textfield.TextInputLayout>
 
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_weight="3"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint=" Year of birth"
+                    android:layout_marginLeft="5dp"
+                    app:hintEnabled="true">
+                    <EditText
+                        android:id="@+id/year"
+                        android:imeOptions="actionNext"
+                        android:maxLength="4"
+                        android:maxLines="1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="date" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+            <RadioGroup
+                android:layout_weight="2"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/female"
+                    android:layout_weight="1"
+                    android:text="Female"
+                    android:background="@drawable/vien"
+                    android:drawablePadding="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <RadioButton
+                    android:id="@+id/male"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="1"
+                    android:drawablePadding="6dp"
+                    android:background="@drawable/vien"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="Male"/>
+            </RadioGroup>
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -86,6 +153,7 @@
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
+
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -98,8 +166,10 @@
                     android:id="@+id/numberPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:maxLength="10"
                     android:inputType="phone" />
             </com.google.android.material.textfield.TextInputLayout>
+
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
@@ -111,11 +181,14 @@
                 app:hintEnabled="true">
 
                 <AutoCompleteTextView
-                    android:id="@+id/habitat"
+                    android:id="@+id/country"
+                    android:imeOptions="actionDone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingLeft="15dp"
                     android:paddingTop="15dp"
+                    android:maxLines="1"
+                    android:inputType="textCapWords"
                     android:paddingBottom="15dp"
                     android:textSize="16dp" />
             </com.google.android.material.textfield.TextInputLayout>
@@ -125,5 +198,4 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>
