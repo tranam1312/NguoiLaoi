@@ -12,6 +12,7 @@ class MessengerFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() = MessengerFragment()
+        val TAG ="MESSENGER_FRAGMENT"
     }
     private lateinit var binding:MessengerFragmentBinding
     private lateinit var viewModel: MessengerViewModel

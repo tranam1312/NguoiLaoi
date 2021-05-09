@@ -4,9 +4,9 @@ import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.stranger.model.ItemHome
-import com.example.stranger.model.ProFile
-import com.example.stranger.model.RequsestFriend
+import com.example.stranger.mode.ItemHome
+import com.example.stranger.mode.ProFile
+import com.example.stranger.mode.RequsestFriend
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -27,6 +27,8 @@ class FirebaseModel {
     private val messenger = total.child("Mesenger")
     private val requestFirend= total.child("RequestFriend")
     private var  urlList : ArrayList<String> = arrayListOf()
+    var liveDataListItemHome : MutableLiveData<ArrayList<ItemHome>>  = MutableLiveData()
+    var listItemHome : ArrayList<ItemHome> = arrayListOf()
 
     fun getUser(): FirebaseUser {
         return mAuth.currentUser
@@ -56,7 +58,6 @@ class FirebaseModel {
                 mission.success(url)
                 Log.d("kkk", "${url}")
             })
-
         }
         }
     fun upLoadListImg(listData: ArrayList<Uri>, misson: missionListImg){
@@ -78,24 +79,50 @@ class FirebaseModel {
             }
         }
     }
-    fun getAllHome():ArrayList<ItemHome>{
-        var listItemHome : ArrayList<ItemHome> = arrayListOf()
-        home.addValueEventListener(object : ValueEventListener{
+    fun getAllHome(missionHome: missionHome){
+        home.addListenerForSingleValueEvent(object : ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 for (item in snapshot.children){
-                   val itemHome : ItemHome =item.getValue(ItemHome::class.java) as ItemHome
+                    val itemHome:ItemHome = item.getValue(ItemHome::class.java) as ItemHome
                     listItemHome.add(itemHome)
-                    Log.d("itemHome", "${itemHome}")
+                    missionHome.succsess(listItemHome)
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
             }
 
         })
-        return listItemHome
     }
+    fun itemHomeChange(key : String, missionChange: missionChange){
+        home.child(key).addChildEventListener(object : ChildEventListener{
+            override fun onChildAdded(snapshot: DataSnapshot, previousChildName: String?) {
+               val itemHome : ItemHome = snapshot.getValue(ItemHome::class.java) as ItemHome
+                missionChange.add(itemHome)
+            }
+
+            override fun onChildChanged(snapshot: DataSnapshot, previousChildName: String?) {
+                val itemHome : ItemHome = snapshot.getValue(ItemHome::class.java) as  ItemHome
+                missionChange.change(itemHome)
+            }
+
+            override fun onChildRemoved(snapshot: DataSnapshot) {
+                val  itemHome : ItemHome = snapshot.getValue(ItemHome::class.java) as ItemHome
+                missionChange.remove(itemHome)
+            }
+
+            override fun onChildMoved(snapshot: DataSnapshot, previousChildName: String?) {
+                val  itemHome : ItemHome = snapshot.getValue(ItemHome::class.java) as ItemHome
+                missionChange.move(itemHome)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+               missionChange.cancel(error.message)
+            }
+
+        })
+    }
+
     fun addRequetFriend(requsestFriend: RequsestFriend){
         requestFirend.child(mAuth.currentUser.uid).setValue(requsestFriend)
     }
@@ -113,9 +140,24 @@ class FirebaseModel {
 
 
 
+    fun getListProFile(listUid: ArrayList<String>) {
+        var listLiveData: MutableLiveData<ArrayList<ProFile>> = MutableLiveData()
+        var listProFile: ArrayList<ProFile> = arrayListOf()
+        for (item in listUid) {
+            val query = proflie.child(getUser().uid)
+            query.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    snapshot.getValue(ProFile::class.java)
 
+                }
+                override fun onCancelled(error: DatabaseError) {
 
+                }
 
+            })
+        }
+
+    }
 
 
     companion object{
@@ -138,4 +180,14 @@ interface missionListImg{
     fun success(urlList: ArrayList<String>,listKey:ArrayList<String>)
     fun failure(exception: Exception)
     fun load()
+}interface missionHome{
+    fun succsess(listItemHome: ArrayList<ItemHome>)
+    fun faile()
+}
+interface missionChange{
+    fun add (itemHome: ItemHome)
+    fun change(itemHome: ItemHome)
+    fun remove(itemHome: ItemHome)
+    fun move(itemHome: ItemHome)
+    fun cancel(err: String)
 }

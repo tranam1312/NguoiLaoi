@@ -2,7 +2,6 @@ package com.example.stranger.local
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.net.UrlQuerySanitizer
 
 class Preferences (  private var sharedPreferences: SharedPreferences? = null
 ){
@@ -17,26 +16,24 @@ class Preferences (  private var sharedPreferences: SharedPreferences? = null
     fun getUserId(): String? {
         return sharedPreferences?.getString(USER_ID, null)
     }
-    fun updateUrlAvatar(url :String){
+    fun updateUrlAvatar(url: String?){
         sharedPreferences?.edit()?.putString(URL_AVATAR, url)?.apply()
     }
     fun getUrlAvatar():String?{
         return sharedPreferences?.getString(URL_AVATAR,null)
     }
-    fun updateUserName(userName:String){
+    fun updateUserName(userName: String?){
         sharedPreferences?.edit()?.putString(USER_NAME, userName)?.apply()
     }
     fun getUserName():String?{
         return sharedPreferences?.getString(USER_NAME, null)
     }
 
-
-
-
-
     fun clear() {
         sharedPreferences!!.edit().clear().apply()
         updateUserId(null)
+        updateUrlAvatar(null)
+        updateUserName(null)
     }
 
     companion object{

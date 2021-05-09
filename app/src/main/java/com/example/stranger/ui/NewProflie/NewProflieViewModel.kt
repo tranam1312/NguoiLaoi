@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.stranger.mission
 import com.example.stranger.missionImg
-import com.example.stranger.model.ProFile
+import com.example.stranger.mode.ProFile
 import com.example.stranger.repository.Repository
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.launch

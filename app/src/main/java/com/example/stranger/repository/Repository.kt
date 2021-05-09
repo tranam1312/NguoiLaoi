@@ -1,9 +1,10 @@
 package com.example.stranger.repository
 
 import android.net.Uri
+import androidx.lifecycle.LiveData
 import com.example.stranger.*
-import com.example.stranger.model.ItemHome
-import com.example.stranger.model.ProFile
+import com.example.stranger.mode.ItemHome
+import com.example.stranger.mode.ProFile
 import com.google.firebase.auth.FirebaseUser
 
 class Repository {
@@ -15,5 +16,7 @@ class Repository {
     fun upLoadImgList(dataList:ArrayList<Uri>, missionListImg: missionListImg) = firebaseModel.upLoadListImg(dataList, missionListImg)
     fun upDateItemHome(key: String,itemHome: ItemHome) = firebaseModel.updateItemHome(key, itemHome)
     fun addItemHome(key: String, itemHome:ItemHome, mission: mission)= firebaseModel.addItemHome(key, itemHome,mission)
-    fun getAllHome():ArrayList<ItemHome> = firebaseModel.getAllHome()
+    fun getAllHome(missionHome: missionHome)= firebaseModel.getAllHome(missionHome)
+    fun itemHomeChange(key: String,missionChange: missionChange) = firebaseModel.itemHomeChange(key, missionChange)
+//    fun getListProflie () = firebaseModel.getListProFile()
 }

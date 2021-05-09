@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.stranger.ui.home.HomeFragment"
+        android:name="com.example.stranger.ui.home.fragment.homeFragment.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
@@ -28,7 +28,7 @@
         tools:layout="@layout/messenger_fragment"/>
 
     <fragment android:id="@+id/navigation_setting"
-        android:name="com.example.stranger.ui.setting.SettingFragment"
+        android:name="com.example.stranger.ui.setting.fragment.setting.SettingFragment"
         tools:layout="@layout/setting_fragment"
         android:label="Setting"/>
 </navigation>

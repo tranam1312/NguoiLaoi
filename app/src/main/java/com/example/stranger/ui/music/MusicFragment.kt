@@ -13,6 +13,7 @@ class MusicFragment : Fragment() {
 
     companion object {
         fun newInstance() = MusicFragment()
+        val TAG ="MUSIC_FRAGMENT"
     }
 
     private lateinit var binding: MusicFragmentBinding

@@ -3,7 +3,7 @@ package com.example.stranger.ui.messenger
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.stranger.databinding.MessengerFragmentBinding
-import com.example.stranger.model.ItemMessenger
+import com.example.stranger.mode.ItemMessenger
 
 class MessengerAdapter: RecyclerView.Adapter<MessengerAdapter.ViewHolder>() {
     inner class ViewHolder(messengerFragmentBinding: MessengerFragmentBinding) : RecyclerView.ViewHolder(messengerFragmentBinding.root){

@@ -14,7 +14,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Stranger">
-        <activity android:name=".ui.messenger.conversation.ConversationActivity"></activity>
+        <activity android:name=".ui.setting.SettingActivity"></activity>
+        <activity android:name=".ui.setting.fragment.SettingActivity" />
+        <activity android:name=".ui.home.HomeActivity" />
+        <activity android:name=".ui.messenger.conversation.ConversationActivity" />
 
         <service
             android:name=".service.BroadSevrivce"
