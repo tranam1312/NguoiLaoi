@@ -15,7 +15,7 @@ class NewPostViewModel : ViewModel() {
         repository.addItemHome(key,itemHome, mission)
     }
     fun getKey()= repository.getkey()
-    fun upListImg(listUri: ArrayList<Uri>, mission: missionListImg) = viewModelScope.launch {
+    fun upListImg(listUri: List<Uri>, mission: missionListImg) = viewModelScope.launch {
         repository.upLoadImgList(listUri,mission)
     }
 }

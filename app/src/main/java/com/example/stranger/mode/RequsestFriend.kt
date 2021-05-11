@@ -1,4 +1,4 @@
-package com.example.stranger.model
+package com.example.stranger.mode
 
-data class RequsestFriend(var requsestFriend: ArrayList<ProFile> = arrayListOf()) {
+data class RequsestFriend(var userId :String) {
 }

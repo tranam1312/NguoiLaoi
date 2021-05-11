@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="CropAreaView"><attr format="reference|color" name="gest_backgroundColor"/><attr format="reference|color" name="gest_borderColor"/><attr format="reference|dimension" name="gest_borderWidth"/><attr format="reference|integer" name="gest_rulesHorizontal"/><attr format="reference|integer" name="gest_rulesVertical"/><attr format="reference|dimension" name="gest_rulesWidth"/><attr format="reference|boolean" name="gest_rounded"/><attr format="reference|float" name="gest_aspect"/></declare-styleable>
+    <declare-styleable name="GestureFrameLayout"><attr name="gest_movementAreaWidth"/><attr name="gest_movementAreaHeight"/><attr name="gest_minZoom"/><attr name="gest_maxZoom"/><attr name="gest_doubleTapZoom"/><attr name="gest_overzoomFactor"/><attr name="gest_overscrollX"/><attr name="gest_overscrollY"/><attr name="gest_fillViewport"/><attr name="gest_gravity"/><attr name="gest_fitMethod"/><attr name="gest_boundsType"/><attr name="gest_panEnabled"/><attr name="gest_flingEnabled"/><attr name="gest_zoomEnabled"/><attr name="gest_rotationEnabled"/><attr name="gest_restrictRotation"/><attr name="gest_doubleTapEnabled"/><attr name="gest_exitEnabled"/><attr name="gest_animationDuration"/><attr name="gest_disableGestures"/><attr name="gest_disableBounds"/></declare-styleable>
+    <declare-styleable name="GestureImageView"><attr name="gest_movementAreaWidth"/><attr name="gest_movementAreaHeight"/><attr name="gest_minZoom"/><attr name="gest_maxZoom"/><attr name="gest_doubleTapZoom"/><attr name="gest_overzoomFactor"/><attr name="gest_overscrollX"/><attr name="gest_overscrollY"/><attr name="gest_fillViewport"/><attr name="gest_gravity"/><attr name="gest_fitMethod"/><attr name="gest_boundsType"/><attr name="gest_panEnabled"/><attr name="gest_flingEnabled"/><attr name="gest_zoomEnabled"/><attr name="gest_rotationEnabled"/><attr name="gest_restrictRotation"/><attr name="gest_doubleTapEnabled"/><attr name="gest_exitEnabled"/><attr name="gest_animationDuration"/><attr name="gest_disableGestures"/><attr name="gest_disableBounds"/></declare-styleable>
+    <declare-styleable name="GestureView"><attr format="reference|dimension" name="gest_movementAreaWidth"/><attr format="reference|dimension" name="gest_movementAreaHeight"/><attr format="reference|float" name="gest_minZoom"/><attr format="reference|float" name="gest_maxZoom"/><attr format="reference|float" name="gest_doubleTapZoom"/><attr format="reference|float" name="gest_overzoomFactor"/><attr format="reference|dimension" name="gest_overscrollX"/><attr format="reference|dimension" name="gest_overscrollY"/><attr format="reference|boolean" name="gest_fillViewport"/><attr name="gest_gravity">
+            
+            <flag name="top" value="0x30"/>
+            <flag name="bottom" value="0x50"/>
+            <flag name="left" value="0x03"/>
+            <flag name="right" value="0x05"/>
+            <flag name="center_vertical" value="0x10"/>
+            <flag name="center_horizontal" value="0x01"/>
+            <flag name="center" value="0x11"/>
+            <flag name="start" value="0x00800003"/>
+            <flag name="end" value="0x00800005"/>
+        </attr><attr name="gest_fitMethod">
+            <enum name="horizontal" value="0"/>
+            <enum name="vertical" value="1"/>
+            <enum name="inside" value="2"/>
+            <enum name="outside" value="3"/>
+            <enum name="none" value="4"/>
+        </attr><attr name="gest_boundsType">
+            <enum name="normal" value="0"/>
+            <enum name="inside" value="1"/>
+            <enum name="outside" value="2"/>
+            <enum name="pivot" value="3"/>
+            <enum name="none" value="4"/>
+        </attr><attr format="reference|boolean" name="gest_panEnabled"/><attr format="reference|boolean" name="gest_flingEnabled"/><attr format="reference|boolean" name="gest_zoomEnabled"/><attr format="reference|boolean" name="gest_rotationEnabled"/><attr format="reference|boolean" name="gest_restrictRotation"/><attr format="reference|boolean" name="gest_doubleTapEnabled"/><attr format="reference|boolean" name="gest_exitEnabled"/><attr format="reference|integer" name="gest_animationDuration"/><attr format="reference|boolean" name="gest_disableGestures"/><attr format="reference|boolean" name="gest_disableBounds"/></declare-styleable>
+</resources>

@@ -2,15 +2,15 @@ package com.example.stranger.ui.login
 
 import android.content.ContentValues
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import com.example.stranger.R
 import com.example.stranger.databinding.ActivityLoginBinding
 import com.example.stranger.local.Preferences
+import com.example.stranger.ui.Home
 import com.example.stranger.ui.NewProflie.NewProFileActivity
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -22,9 +22,10 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import gun0912.tedimagepicker.util.ToastUtil.context
 
+
 class LoginActivity : AppCompatActivity() {
     private lateinit var googleSignInClient: GoogleSignInClient
-    private lateinit var auth: FirebaseAuth
+    private var auth: FirebaseAuth  = FirebaseAuth.getInstance()
     private val preferences: Preferences by lazy {
         Preferences.getInstance(context)
     }
@@ -40,11 +41,9 @@ class LoginActivity : AppCompatActivity() {
 
         }
             else {
-                Handler().postDelayed({
-                    preferences.updateUserId(auth.currentUser.uid)
-                    val  intent = Intent(this, NewProFileActivity::class.java)
-                    startActivity(intent)
-                },3000)
+                preferences.updateUserId(auth.currentUser.uid)
+                val  intent = Intent(this, Home::class.java)
+                startActivity(intent)
             }
         }
 
@@ -55,7 +54,8 @@ class LoginActivity : AppCompatActivity() {
         startActivityForResult(signInIntent, RC_SIGN_IN)
     }
 
-    val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+
+    var gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
         .requestIdToken("1025824514235-krpjcnb4g9g9qqtg1l7m7j1id0vtmg2a.apps.googleusercontent.com")
         .requestEmail()
         .build()
